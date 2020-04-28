@@ -24,7 +24,8 @@ public class MainActivity extends FlutterActivity {
             new MethodChannel.MethodCallHandler() {
               @Override
               public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
-                if(methodCall.equals("getBatteryLevel")){
+                // we need to call .method after methodCall
+                if(methodCall.method.equals("getBatteryLevel")){
                   int batteryLevel = getBatteryLevel();
                   if (batteryLevel != -1){
                       result.success(batteryLevel);
